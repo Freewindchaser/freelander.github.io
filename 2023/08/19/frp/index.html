@@ -237,10 +237,10 @@
     <div class="main-left--info">
       <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
       <div class="main-left--intro">
-        <p class="main-left--name">Cola.</p>
+        <p class="main-left--name">freelander</p>
         <div class="main-left--tags">
-          <span class="main-left--tag">中二</span>
-          <span class="main-left--tag">宅</span>
+          <span class="main-left--tag">旅游</span>
+          <span class="main-left--tag">音乐</span>
         </div>
       </div>
     </div>
@@ -335,7 +335,7 @@
       </p>
       <p class="main-left--subtitle">
         <span>上线时间：</span>
-        <span>551天</span>
+        <span>5天</span>
       </p>
       <p class="main-left--subtitle">
         <span>当前版本：</span>
@@ -367,6 +367,11 @@ pre::-webkit-scrollbar-thumb {
 pre:active {
   background-color: rgb(81, 95, 116);
 }
+
+  .catelogue {
+    max-height: 300px; /* 设置目录容器的最大高度 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+  }
 </style>
 
 <div class="article-container">
@@ -397,11 +402,27 @@ pre:active {
 <p>客户端：kali linux&#x2F;linux&#x2F;windows（如果是windows的话客户端必须要下载frp的windows版本）</p>
 <p>服务端：物理机IP</p>
 <p>客户端：文件里填写物理机得IP地址，新开监控端口</p>
-<h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><h4 id="服务端：frps"><a href="#服务端：frps" class="headerlink" title="服务端：frps"></a>服务端：frps</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[common]		#  共同配置，必需有该配置（请勿修改该代理名）</span><br><span class="line">bind_addr = 192.168.129.16	#  绑定的 IP,默认是127.0.0.1</span><br><span class="line">bind_port = 7000	#  服务端监听的端口</span><br><span class="line">max_pool_count=1    # 最多能有多少个frpc链接上来</span><br></pre></td></tr></table></figure>
+<h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><h4 id="服务端：frps"><a href="#服务端：frps" class="headerlink" title="服务端：frps"></a>服务端：frps</h4><pre class="line-numbers language-none"><code class="language-none">[common]		#  共同配置，必需有该配置（请勿修改该代理名）
+bind_addr &#x3D; 192.168.129.16	#  绑定的 IP,默认是127.0.0.1
+bind_port &#x3D; 7000	#  服务端监听的端口
+max_pool_count&#x3D;1    # 最多能有多少个frpc链接上来
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/2023/08/19/frp/frp1.png"> </p>
 <h4 id="启动服务端：frps-exe-c-frps-ini"><a href="#启动服务端：frps-exe-c-frps-ini" class="headerlink" title="启动服务端：frps.exe -c frps.ini"></a>启动服务端：frps.exe -c frps.ini</h4><p><img src="/2023/08/19/frp/frp2.png"></p>
-<h4 id="客户端：frpc配置客户端的socks5代理"><a href="#客户端：frpc配置客户端的socks5代理" class="headerlink" title="客户端：frpc配置客户端的socks5代理"></a>客户端：frpc配置客户端的socks5代理</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_add = 192.168.129.16  #  服务端 IP（需和服务端的 IP 配置为一致）</span><br><span class="line">server_port = 7000	    #  服务端端口（需和服务端的端口配置为一致）</span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">[plugin_socks]                      </span><br><span class="line">type = tcp                  </span><br><span class="line">remote_port = 8899          </span><br><span class="line">plugin = socks5            </span><br><span class="line">plugin_user = admin         </span><br><span class="line">plugin_passwd = passwd      </span><br><span class="line">use_encryption = true       </span><br><span class="line">use_compression = true     </span><br></pre></td></tr></table></figure>
+<h4 id="客户端：frpc配置客户端的socks5代理"><a href="#客户端：frpc配置客户端的socks5代理" class="headerlink" title="客户端：frpc配置客户端的socks5代理"></a>客户端：frpc配置客户端的socks5代理</h4><pre class="line-numbers language-none"><code class="language-none">[common]
+server_add &#x3D; 192.168.129.16  #  服务端 IP（需和服务端的 IP 配置为一致）
+server_port &#x3D; 7000	    #  服务端端口（需和服务端的端口配置为一致）
+          
+
+[plugin_socks]                      
+type &#x3D; tcp                  
+remote_port &#x3D; 8899          
+plugin &#x3D; socks5            
+plugin_user &#x3D; admin         
+plugin_passwd &#x3D; passwd      
+use_encryption &#x3D; true       
+use_compression &#x3D; true     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="启动客户端：fpc-exe-c-frpc-ini"><a href="#启动客户端：fpc-exe-c-frpc-ini" class="headerlink" title="启动客户端：fpc.exe  -c  frpc.ini"></a>启动客户端：fpc.exe  -c  frpc.ini</h4><p> <img src="/2023/08/19/frp/frp3.png"></p>
 <h1 id="proxifer联合frp使用"><a href="#proxifer联合frp使用" class="headerlink" title="proxifer联合frp使用"></a>proxifer联合frp使用</h1><h4 id="首先使用proxifer设置代理"><a href="#首先使用proxifer设置代理" class="headerlink" title="首先使用proxifer设置代理"></a>首先使用proxifer设置代理</h4><p><img src="/2023/08/19/frp/pr2.png"> </p>
